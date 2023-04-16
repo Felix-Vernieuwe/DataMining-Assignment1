@@ -14,7 +14,7 @@ def hot_encoding(df):
     categorical_columns = df.select_dtypes(include=['object']).columns
 
     encoder = make_column_transformer(
-        (OneHotEncoder(min_frequency=5, sparse=False), categorical_columns),
+        (OneHotEncoder(min_frequency=5, sparse_output=False), categorical_columns),
         remainder='passthrough'
     ).fit(df)
     encoded = encoder.transform(df)
